@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DTU-EHR System</title>
+
+    <link rel="stylesheet" href="style_home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body onload='loadWelcome()'>
+
+<header>
+
+    <p><a href="#" class="logo">DTU-EHR system</a>
+    </p>
+
+    <ul>
+        <li><a href="#" onclick='loadWelcome()'>Hjem</a></li>
+        <li><a href="#" onclick='loadHTML("sitecontent", "journal.html")'>Journal</a></li>
+        <li><a href="#" onclick='loadAftaler()'>Konsultationer</a></li>
+        <li><a href="#" onclick='loadLab()'>Laboratoriesvar</a></li>
+        <li><a href="#popup1">Log-ud</a></li>
+
+    </ul>
+
+    <div id="popup1" class="overlay">
+        <div class="popup">
+            <h2>Du er ved at logge ud</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content1">
+                Er du sikker på du vil logge ud?<br><br>
+                <p>
+                <form action="index3.html" onclick="clearSession()">
+                    <button class="button" type="Submit">Ja tak</button>
+                </form>
+                </p>
+
+                <button class="button" type="Submit">Annuller</button>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="main-content">
+    <div class="sidebar">
+        <div id="findPatientDiv">
+            <h1>Find patient </h1>
+            <hr>
+
+            <div></div>
+            <form class="form" id="cprform">
+                Indtast CPR nummer for at søge patient:
+                <input type="text" class="input" name="cpr" width="200px" autofocus placeholder="Indtast CPR nr:">
+            </form>
+            <button class="button" type="Submit" onclick="fetchCPR()" id="cprbutton">Søg CPR</button>
+            <br><br>
+            <hr>
+            <div id="error_sidebar" class="error-message"></div>
+            <div class="foundCPRDiv">
+                <div class="" id="navnfelt"></div>
+                <div class="" id="cprfelt"></div>
+                <div id="chooseButton"></div>
+                <div class="success-message" id="successcode"></div>
+            </div>
+
+
+        </div>
+        <div id="showPatientDiv">
+            <h1 id="navnfelt_sidebar"></h1>
+            <h2 id="cprfelt_sidebar"></h2>
+            <div id="addfelt_sidebar"></div>
+            <div id="cityfelt_sidebar"></div>
+
+            <div id="chooseNewPatientButton" class="buttonbottom"></div>
+
+        </div>
+
+    </div>
+
+
+    <div class="sitecontent" id="sitecontentwrapper">
+        <div  id="sitecontent"></div>
+        <div class="error-message" id="errorfelt3"></div>
+        <div class="success-message" id="succescode"></div>
+    </div>
+
+</div>
+
+
+</body>
+<footer>
+    <div class="footer_container">Du er logget ind som:
+        <ins id="userID"></ins>
+        (
+        <ins id="roleID"></ins>
+        )
+    </div>
+</footer>
+<script src="./dynamichtml.js"></script>
+<script src="clickFetch.js"></script>
+
+</html>
